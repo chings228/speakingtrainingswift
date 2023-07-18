@@ -14,7 +14,7 @@ struct ContentView: View {
    @State private var RandomNumber = 0
 
      @ObservedObject var voiceOut = VoiceOut()
-    @ObservedObject var speechRecognition = SpeechRecoginition()
+    @ObservedObject var speechRecognition = SpeechRecognizer()
     
     @State var selectLang = "en-US"
     
@@ -50,22 +50,31 @@ struct ContentView: View {
                     print("\(lang)")
                 }
                
+                speechRecognition.stopTranscribing()
                 
                 RandomNumber = Int.random(in: 1..<1000)
                 
-                //voiceOut.readnumber(speech: String(RandomNumber),lang: selectLang)
+                voiceOut.readnumber(speech: String(RandomNumber),lang: selectLang)
                 
-                speechRecognition.listenToSpeech()
+                speechRecognition.resetTranscript()
+                speechRecognition.changeLang(lang: selectLang)
+                speechRecognition.startTranscribing()
+                
+                
+                
                 
                 
             }
             .disabled(voiceOut.isTalk ? true:false)
             
             
-            Text(voiceOut.isTalk ? "wwodwowo" : "tututututu")
+
 
             
             Text("\(RandomNumber)")
+                .font(.title)
+            
+            Text("\(speechRecognition.message)")
                 .font(.title)
             
             

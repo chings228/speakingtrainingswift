@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4F2CE82A6621620024DDDE /* ListenVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F2CE72A6621620024DDDE /* ListenVoice.swift */; };
 		4ED971112A5B96FA007A784B /* SpeakingTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED971102A5B96FA007A784B /* SpeakingTrainingApp.swift */; };
 		4ED971132A5B96FA007A784B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED971122A5B96FA007A784B /* ContentView.swift */; };
 		4ED971152A5B96FB007A784B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED971142A5B96FB007A784B /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E4F2CE72A6621620024DDDE /* ListenVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenVoice.swift; sourceTree = "<group>"; };
 		4ED9710D2A5B96FA007A784B /* SpeakingTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakingTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED971102A5B96FA007A784B /* SpeakingTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingTrainingApp.swift; sourceTree = "<group>"; };
 		4ED971122A5B96FA007A784B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				4ED971142A5B96FB007A784B /* Assets.xcassets */,
 				4ED971162A5B96FB007A784B /* Preview Content */,
 				4ED971202A5BA60D007A784B /* VoiceOut.swift */,
+				4E4F2CE72A6621620024DDDE /* ListenVoice.swift */,
 			);
 			path = SpeakingTraining;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				4ED971112A5B96FA007A784B /* SpeakingTrainingApp.swift in Sources */,
 				4ED9711F2A5B971F007A784B /* Random.swift in Sources */,
 				4ED971212A5BA60D007A784B /* VoiceOut.swift in Sources */,
+				4E4F2CE82A6621620024DDDE /* ListenVoice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
