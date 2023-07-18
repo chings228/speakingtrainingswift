@@ -37,6 +37,7 @@ class VoiceOut : NSObject,ObservableObject{
         utterance.pitchMultiplier = 1.0
         utterance.rate = 0.5
         utterance.voice = AVSpeechSynthesisVoice(language: Singleton.shared.selectedLang)
+        utterance.volume = 10
         
         print(Singleton.shared.selectedLang)
         

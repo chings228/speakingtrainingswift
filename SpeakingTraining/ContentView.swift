@@ -43,7 +43,12 @@ struct ContentView: View {
                 .onChange(of: selectLang) { newValue in
                     print(newValue)
                     Singleton.shared.selectedLang = newValue
-                    userDefault.setValue(newValue, forKey: "selectLang")
+                
+                        userDefault.setValue(newValue, forKey: "selectLang")
+                    
+                    userDefault.synchronize()
+                    
+                    
                 }
   
             
@@ -54,15 +59,15 @@ struct ContentView: View {
                     print("\(lang)")
                 }
                
-                speechRecognition.stopTranscribing()
+//                speechRecognition.stopTranscribing()
                 
                 RandomNumber = Int.random(in: 1..<1000)
                 
                 voiceOut.readnumber(speech: String(RandomNumber))
                 
-                speechRecognition.resetTranscript()
-
-                speechRecognition.startTranscribing()
+//                speechRecognition.resetTranscript()
+//
+//                speechRecognition.startTranscribing()
                 
                 
                 
