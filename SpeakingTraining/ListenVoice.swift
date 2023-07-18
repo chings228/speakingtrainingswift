@@ -63,15 +63,10 @@ class SpeechRecognizer: NSObject, ObservableObject {
         }
     }
     
-   func changeLang(lang:String){
-            currentLang = lang
-           recognizer = SFSpeechRecognizer(locale:Locale(identifier: lang))
-        
-        
-    }
+
     
  func startTranscribing() {
-
+     recognizer =  SFSpeechRecognizer(locale:Locale(identifier: Singleton.shared.selectedLang))
            transcribe()
    
     }

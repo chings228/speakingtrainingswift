@@ -26,7 +26,7 @@ class VoiceOut : NSObject,ObservableObject{
     }
     
     
-    func readnumber(speech : String , lang : String){
+    func readnumber(speech : String ){
         
         
         
@@ -36,7 +36,9 @@ class VoiceOut : NSObject,ObservableObject{
       
         utterance.pitchMultiplier = 1.0
         utterance.rate = 0.5
-        utterance.voice = AVSpeechSynthesisVoice(language: lang)
+        utterance.voice = AVSpeechSynthesisVoice(language: Singleton.shared.selectedLang)
+        
+        print(Singleton.shared.selectedLang)
         
         print(utterance.speechString)
       

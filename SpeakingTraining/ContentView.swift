@@ -18,13 +18,10 @@ struct ContentView: View {
     
     @State var selectLang = "en-US"
     
+    let userDefault = UserDefaults()
     
-    let langs  = [
-        "en-US": "English",
-        "zh-HK":"Chinese",
-        "th-TH":"Thai"
-    ]
     
+    let langs  = Setting.langs
     
     var body: some View {
         VStack(spacing:20) {
@@ -33,6 +30,8 @@ struct ContentView: View {
                 
                 Picker("Select Lang",selection:$selectLang){
                     
+                    
+                    
                     ForEach(Array(langs.keys), id: \.self) { key in
                           
                               Text(langs[key] ?? "")
@@ -40,6 +39,11 @@ struct ContentView: View {
                       }
 
                     
+                }
+                .onChange(of: selectLang) { newValue in
+                    print(newValue)
+                    Singleton.shared.selectedLang = newValue
+                    userDefault.setValue(newValue, forKey: "selectLang")
                 }
   
             
@@ -54,10 +58,10 @@ struct ContentView: View {
                 
                 RandomNumber = Int.random(in: 1..<1000)
                 
-                voiceOut.readnumber(speech: String(RandomNumber),lang: selectLang)
+                voiceOut.readnumber(speech: String(RandomNumber))
                 
                 speechRecognition.resetTranscript()
-                speechRecognition.changeLang(lang: selectLang)
+
                 speechRecognition.startTranscribing()
                 
                 
@@ -85,7 +89,25 @@ struct ContentView: View {
             .disabled(voiceOut.isTalk ? false : true)
         }
         .padding()
+        .onAppear{
+            print("on appear")
+            
+            guard let lang = userDefault.value(forKey: "selectLang") as? String else {
+                print("empty userdefault")
+                
+                selectLang = "en-US"
+                userDefault.setValue(selectLang, forKey: "selectLang")
+                return
+                
+            }
+            
+            print(lang)
+            selectLang = lang
+            
+            
+        }
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
