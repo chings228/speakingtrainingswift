@@ -16,9 +16,9 @@ struct ContentView: View {
      @ObservedObject var voiceOut = VoiceOut()
     @ObservedObject var speechRecognition = SpeechRecognizer()
     
-    @State var selectLang = "en-US"
+    @AppStorage("selectLang") private var selectLang = "en-US"
     
-    let userDefault = UserDefaults()
+
     
     
     let langs  = Setting.langs
@@ -43,10 +43,7 @@ struct ContentView: View {
                 .onChange(of: selectLang) { newValue in
                     print(newValue)
                     Singleton.shared.selectedLang = newValue
-                
-                        userDefault.setValue(newValue, forKey: "selectLang")
                     
-                    userDefault.synchronize()
                     
                     
                 }
@@ -97,18 +94,7 @@ struct ContentView: View {
         .onAppear{
             print("on appear")
             
-            guard let lang = userDefault.value(forKey: "selectLang") as? String else {
-                print("empty userdefault")
-                
-                selectLang = "en-US"
-                userDefault.setValue(selectLang, forKey: "selectLang")
-                return
-                
-            }
-            
-            print(lang)
-            selectLang = lang
-            
+
             
         }
     }
