@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct SpeakingTrainingApp: App {
+    @StateObject private var vm = SpeakingViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            
+            StartView()
+                .environmentObject(vm)
         }
     }
 }

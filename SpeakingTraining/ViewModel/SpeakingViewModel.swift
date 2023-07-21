@@ -14,9 +14,9 @@ class SpeakingViewModel : ObservableObject{
     
     
     
-    @Published private var languageSelect : String = "en-US"
+     @Published  var languageSelect : String = "en-US"
     
-    @Published private var level : Int = 0
+    @Published var level : Int = 0
     
     
     

@@ -71,14 +71,8 @@
 				4EF413B42A6A3D76005A994B /* View */,
 				4EF413B32A6A3CB7005A994B /* ViewModel */,
 				4ED971102A5B96FA007A784B /* SpeakingTrainingApp.swift */,
-				4ED971122A5B96FA007A784B /* ContentView.swift */,
-				4ED9711E2A5B971F007A784B /* Random.swift */,
 				4ED971142A5B96FB007A784B /* Assets.xcassets */,
 				4ED971162A5B96FB007A784B /* Preview Content */,
-				4ED971202A5BA60D007A784B /* VoiceOut.swift */,
-				4E4F2CE72A6621620024DDDE /* ListenVoice.swift */,
-				4E4F2CE92A6671850024DDDE /* Singleton.swift */,
-				4E4F2CEB2A6674040024DDDE /* Setting.swift */,
 			);
 			path = SpeakingTraining;
 			sourceTree = "<group>";
@@ -94,6 +88,8 @@
 		4EF413B32A6A3CB7005A994B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4E4F2CE72A6621620024DDDE /* ListenVoice.swift */,
+				4ED971202A5BA60D007A784B /* VoiceOut.swift */,
 				4EF413B52A6A3D95005A994B /* SpeakingViewModel.swift */,
 			);
 			path = ViewModel;
@@ -102,6 +98,7 @@
 		4EF413B42A6A3D76005A994B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4ED971122A5B96FA007A784B /* ContentView.swift */,
 				4EF413B12A6A3C9E005A994B /* StartView.swift */,
 			);
 			path = View;
@@ -110,6 +107,9 @@
 		4EF413B92A6A3E77005A994B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4E4F2CEB2A6674040024DDDE /* Setting.swift */,
+				4E4F2CE92A6671850024DDDE /* Singleton.swift */,
+				4ED9711E2A5B971F007A784B /* Random.swift */,
 				4EF413B72A6A3E30005A994B /* Utils.swift */,
 			);
 			path = Utils;

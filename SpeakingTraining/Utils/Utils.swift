@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Common{
+struct Utils{
     
     static let langs  = [
         "en-US": "English",

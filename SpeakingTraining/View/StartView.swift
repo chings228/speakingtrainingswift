@@ -9,16 +9,72 @@ import SwiftUI
 
 struct StartView: View {
     
+    @EnvironmentObject var vm : SpeakingViewModel
     
-    
+    @AppStorage("selectLang") private var appStorageSelectLang =  "en-US"
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        
+        VStack(spacing:20){
+            Text("Speaking Training")
+                .fontWeight(.bold)
+                .font(.largeTitle)
+
+                Section{
+                    Picker("Select Language",selection:$vm.languageSelect){
+                        
+                        
+                        
+                        ForEach(Array(Utils.langs.keys), id: \.self) { key in
+                              
+                            Text(Utils.langs[key] ?? "")
+                              
+                          }
+
+                        
+                    }
+                }
+                .onChange(of: vm.languageSelect) { newValue in
+                    appStorageSelectLang = newValue
+                }
+
+                Section{
+                    Picker("Select Language",selection:$vm.languageSelect){
+                        
+                        
+                        
+                        ForEach(Array(Utils.langs.keys), id: \.self) { key in
+                              
+                            Text(Utils.langs[key] ?? "")
+                              
+                          }
+
+                        
+                    }
+                }
+
+                
+            
+         
+
+            
+            
+            
+            
+            
+        }
+        .onAppear{
+            vm.languageSelect = appStorageSelectLang
+        }
+
+        
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
         StartView()
+            .environmentObject(SpeakingViewModel())
     }
 }
