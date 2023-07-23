@@ -39,20 +39,22 @@ struct StartView: View {
                     appStorageSelectLang = newValue
                 }
 
-                Section{
-                    Picker("Select Language",selection:$vm.languageSelect){
+                
+                    Picker("Select Level",selection:$vm.level){
                         
                         
                         
-                        ForEach(Array(Utils.langs.keys), id: \.self) { key in
-                              
-                            Text(Utils.langs[key] ?? "")
-                              
-                          }
+                        ForEach(1..<4){index in
+                            
+                            Text("Level \(index)")
+                            
+                        }
 
                         
                     }
-                }
+                
+            
+            
 
                 
             
