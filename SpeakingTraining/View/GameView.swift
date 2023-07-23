@@ -11,16 +11,36 @@ struct GameView: View {
     
     
     
-    @EnvironmentObject 
+    @EnvironmentObject var vm : SpeakingViewModel
+    @ObservedObject var voiceOut = VoiceOut()
+   @ObservedObject var speechRecognition = SpeechRecognizer()
     
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack{
+            
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        }
+            .onAppear{
+                
+                    print("on appear")
+                print(vm.languageSelect)
+                print(vm.level)
+            }
     }
+
 }
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
+            .environmentObject({()-> SpeakingViewModel in
+                let envObj = SpeakingViewModel()
+                envObj.languageSelect = "th-TH"
+                envObj.level = 2
+                return envObj
+                
+            }())
     }
 }

@@ -16,52 +16,54 @@ struct StartView: View {
     var body: some View {
         
         
-        VStack(spacing:20){
+        VStack(spacing:30){
             Text("Speaking Training")
                 .fontWeight(.bold)
                 .font(.largeTitle)
-
+            
+            
+                
+            VStack(spacing:10){
+                Text("Select Language")
+                    .font(.title)
                 Section{
                     Picker("Select Language",selection:$vm.languageSelect){
                         
                         
                         
                         ForEach(Array(Utils.langs.keys), id: \.self) { key in
-                              
+                            
                             Text(Utils.langs[key] ?? "")
-                              
-                          }
-
+                            
+                        }
+                        
                         
                     }
+                    .scaleEffect(1.5)
                 }
                 .onChange(of: vm.languageSelect) { newValue in
                     appStorageSelectLang = newValue
                 }
-
+                
                 Section{
                     Picker("Select Language",selection:$vm.languageSelect){
                         
                         
                         
                         ForEach(Array(Utils.langs.keys), id: \.self) { key in
-                              
+                            
                             Text(Utils.langs[key] ?? "")
-                              
-                          }
-
+                            
+                        }
+                        
                         
                     }
+                    .scaleEffect(1.5)
                 }
-
-                
-            
-         
-
-            
-            
-            
-            
+                .onChange(of: vm.languageSelect) { newValue in
+                    appStorageSelectLang = newValue
+                }
+            }
             
         }
         .onAppear{
