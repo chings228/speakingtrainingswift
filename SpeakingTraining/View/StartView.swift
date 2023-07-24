@@ -16,42 +16,52 @@ struct StartView: View {
     var body: some View {
         
         
-        VStack(spacing:20){
+        VStack(spacing:30){
             Text("Speaking Training")
                 .fontWeight(.bold)
                 .font(.largeTitle)
-
+            
+            
+                
+            VStack(spacing:10){
+                Text("Select Language")
+                    .font(.title)
                 Section{
                     Picker("Select Language",selection:$vm.languageSelect){
                         
                         
                         
                         ForEach(Array(Utils.langs.keys), id: \.self) { key in
-                              
+                            
                             Text(Utils.langs[key] ?? "")
-                              
-                          }
-
+                            
+                        }
+                        
                         
                     }
+                    .scaleEffect(1.5)
                 }
                 .onChange(of: vm.languageSelect) { newValue in
                     appStorageSelectLang = newValue
                 }
-
                 
-                    Picker("Select Level",selection:$vm.level){
+                
+                
+                Picker("Select Level",selection:$vm.level){
+                    
+                    
+                    
+                    ForEach(1..<4){index in
                         
-                        
-                        
-                        ForEach(1..<4){index in
-                            
-                            Text("Level \(index)")
-                            
-                        }
-
+                        Text("Level \(index)")
                         
                     }
+                    
+                    
+                }
+                
+                
+            }
                 
             
             
@@ -63,7 +73,7 @@ struct StartView: View {
             
             
             
-            
+
             
         }
         .onAppear{
