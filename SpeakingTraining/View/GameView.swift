@@ -27,7 +27,7 @@ struct GameView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common)
         .autoconnect()
     
-    var gameTimer = Timer.publish(every: 1, on: .main, in: .common)
+    var gameTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
 
 
@@ -83,8 +83,9 @@ struct GameView: View {
             
             if (gameTimerCounter <= 0){
                 
-                self.gameTimer.connect().cancel()
+                self.gameTimerCounter = 5
                 startGame()
+                
             }
         }
         
@@ -95,7 +96,7 @@ struct GameView: View {
         
         print("start game")
         vm.generateRandom()
-        gameTimer = Timer.publish(every: 1, on: .main, in: .common).connect()
+       
 
     }
     
