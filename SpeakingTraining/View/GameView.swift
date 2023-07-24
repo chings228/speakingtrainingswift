@@ -16,21 +16,98 @@ struct GameView: View {
    @ObservedObject var speechRecognition = SpeechRecognizer()
     
     
+    @State private var isStartCounterShow : Bool = true
+    @State private var startTimerCounter : Int = 2
+    
+    
+    @State private var isGameTimerCounter : Int = 10
+    @State private var numOfQuestion : Int = 5
+    
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common)
+        .autoconnect()
+    
+    var gameTimer = Timer.publish(every: 1, on: .main, in: .common)
+    
+
+
+    
+    @State private var gameTimerCounter : Int = 5
+    
+    
     var body: some View {
         
-        VStack{
-            
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        }
-            .onAppear{
-                
-                    print("on appear")
-                print(vm.languageSelect)
-                print(vm.level)
-            }
-    }
 
+        
+        ZStack{
+            Text("\(startTimerCounter)")
+                .fontWeight(.bold)
+                .font(.system(size: 200))
+                .opacity(isStartCounterShow ? 1 : 0)
+            
+            
+            VStack{
+                
+                
+                Text("\(vm.randomNumber)")
+                    .font(.system(size: 100))
+                    .lineLimit(1)
+                    .opacity(isStartCounterShow ? 0 : 1)
+            }
+            
+            
+        }
+        .onAppear{
+            
+            print("on appear")
+            print(vm.languageSelect)
+            print(vm.levelSelect)
+            
+        }
+        .onReceive(timer) { _ in
+            startTimerCounter -= 1
+            
+            print("Start counter \(startTimerCounter)")
+            
+            if (startTimerCounter <= 0){
+                
+                self.timer.upstream.connect().cancel()
+                isStartCounterShow = false
+                startGame()
+            }
+        }
+        .onReceive(gameTimer) { _ in
+            
+            gameTimerCounter -= 1
+            print("Game counter \(gameTimerCounter)")
+            
+            if (gameTimerCounter <= 0){
+                
+                self.gameTimer.connect().cancel()
+                startGame()
+            }
+        }
+        
+    }
+    
+    
+    func startGame(){
+        
+        print("start game")
+        vm.generateRandom()
+        gameTimer = Timer.publish(every: 1, on: .main, in: .common).connect()
+
+    }
+    
+    
+    
+    
 }
+
+
+
+
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
@@ -38,7 +115,7 @@ struct GameView_Previews: PreviewProvider {
             .environmentObject({()-> SpeakingViewModel in
                 let envObj = SpeakingViewModel()
                 envObj.languageSelect = "th-TH"
-                envObj.level = 2
+                envObj.levelSelect = .Difficult
                 return envObj
                 
             }())

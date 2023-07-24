@@ -18,6 +18,19 @@ struct Utils{
         "de-DE":"German"
     ]
     
-    
+
+
+
     
 }
+
+
+enum PlayLevel:String,CaseIterable{
+
+    case Beginner
+    case Medium
+    case Difficult
+
+}
+
+

@@ -21,11 +21,3 @@ struct Setting{
 }
 
 
-
-//enum PlayLevel{
-//
-//    case Beginner,
-//    case Medium,
-//    case Difficult
-//
-//}
