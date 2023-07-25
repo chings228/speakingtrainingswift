@@ -150,8 +150,17 @@ class SpeechRecognizer: ObservableObject {
     
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
+            
+            
+            if (message.isNumber){
+                
+                transcript = message
+            }
 
-            transcript = message
+            else{
+                
+                print("not number")
+            }
 
             
         }

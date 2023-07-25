@@ -31,10 +31,14 @@ class SpeakingViewModel : ObservableObject{
             
             
         }
+        else if (levelSelect == .Medium){
+            
+            randomNumber = Int.random(in: 20...999)
+        }
         else if (levelSelect == .Difficult){
             
             
-            randomNumber = Int.random(in: 0...10000)
+            randomNumber = Int.random(in: 1000...10000)
         }
         
       

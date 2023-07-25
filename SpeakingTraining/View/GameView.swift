@@ -123,7 +123,7 @@ struct GameView: View {
                 
                 if (gameTimerCounter == 0){
                     
-                    self.gameTimerCounter = 10
+                   
                     startGame()
                     
                 }
@@ -133,6 +133,13 @@ struct GameView: View {
         }
         .onChange(of: speechRecognition.transcript) { newValue in
             print("new speech \(newValue)")
+            
+            if (Int(newValue) == vm.randomNumber){
+                
+                print("bingo")
+                
+                startGame()
+            }
         }
         
     }
@@ -143,7 +150,7 @@ struct GameView: View {
         print("start game")
         vm.generateRandom()
         
-        
+        self.gameTimerCounter = 10
             
         speechRecognition.resetTranscript()
 
