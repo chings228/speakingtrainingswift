@@ -5,7 +5,7 @@ import SwiftUI
 
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
-class SpeechRecognizer: ObservableObject {
+@MainActor class SpeechRecognizer: ObservableObject {
     
 
     
@@ -25,7 +25,7 @@ class SpeechRecognizer: ObservableObject {
         }
     }
     
-    @Published var transcript: String = ""
+    @MainActor var transcript: String = ""
     
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -47,26 +47,38 @@ class SpeechRecognizer: ObservableObject {
             return
         }
         
-       
-
-        
+        Task {
+            do {
+                guard await SFSpeechRecognizer.hasAuthorizationToRecognize() else {
+                    throw RecognizerError.notAuthorizedToRecognize
+                }
+                guard await AVAudioSession.sharedInstance().hasPermissionToRecord() else {
+                    throw RecognizerError.notPermittedToRecord
+                }
+            } catch {
+                transcribe(error)
+            }
+        }
     }
     
 
     
-     func startTranscribing() {
-       transcribe()
-        
+    @MainActor func startTranscribing() {
+        Task {
+            await transcribe()
+        }
     }
     
-  func resetTranscript() {
-      reset()
-        
+    @MainActor func resetTranscript() {
+        Task {
+            await reset()
+        }
     }
     
- func stopTranscribing() {
- reset()
-        
+    @MainActor func stopTranscribing() {
+        Task {
+            await reset()
+        }
     }
     
     /**
@@ -134,15 +146,7 @@ class SpeechRecognizer: ObservableObject {
         }
         
         if let result {
-           print("best formatted \(result.bestTranscription.formattedString)")
-//            print("best  \(result.bestTranscription)")
-//            print("transciption \(result.transcriptions)")
-//
-//            guard let md = result.speechRecognitionMetadata else {return}
-//            print(md)
-            
-            print("isfinal \(result.isFinal)")
-            //print(result)
+            print(result.bestTranscription.formattedString)
             transcribe(result.bestTranscription.formattedString)
         }
     }

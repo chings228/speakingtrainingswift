@@ -55,6 +55,7 @@ struct StartView: View {
         .onAppear{
             vm.languageSelect = appStorageSelectLang
             vm.levelSelect = appStorageSelectLevel
+            Singleton.shared.selectedLang = vm.languageSelect
             
         }
 
@@ -115,6 +116,7 @@ extension StartView{
             .onChange(of: vm.languageSelect) { newValue in
                 print("on change new lang \(newValue)")
                 appStorageSelectLang = newValue
+                Singleton.shared.selectedLang = newValue
             }
             
             Rectangle()
