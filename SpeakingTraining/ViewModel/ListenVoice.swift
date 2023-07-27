@@ -42,6 +42,10 @@ class SpeechRecognizer: ObservableObject {
 //        recognizer = SFSpeechRecognizer(locale:Locale.init(identifier: vm.languageSelect) )
         print("speech \(Singleton.shared.selectedLang)")
         recognizer = SFSpeechRecognizer(locale:Locale.init(identifier: Singleton.shared.selectedLang))
+        
+        
+        print(SFSpeechRecognizer.supportedLocales())
+        
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return
@@ -101,6 +105,9 @@ class SpeechRecognizer: ObservableObject {
         audioEngine = nil
         request = nil
         task = nil
+        
+
+        
     }
     
     private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
@@ -110,8 +117,8 @@ class SpeechRecognizer: ObservableObject {
         request.shouldReportPartialResults = true
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
-        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+//        try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
+//        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         let inputNode = audioEngine.inputNode
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)

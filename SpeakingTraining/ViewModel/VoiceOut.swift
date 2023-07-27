@@ -34,6 +34,10 @@ class VoiceOut : NSObject,ObservableObject{
         
         isTalk = true
 
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory(.playAndRecord, mode: .videoRecording, options: [.defaultToSpeaker,.allowAirPlay,.allowBluetoothA2DP])
+          // try? audioSession.setMode(AVAudioSession.Mode.spokenAudio)
+        try? audioSession.setActive(true)
         
         let utterance = AVSpeechUtterance(string:speech)
       

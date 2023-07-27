@@ -184,12 +184,16 @@ struct GameView: View {
                     
                     
                     // read first
+                    
+                    print("read ")
                     isTalkingAnswer = true
                     
-                    speechRecognition.resetTranscript()
-                    speechRecognition.stopTranscribing()
+                    
+                    self.speechRecognition.resetTranscript()
+                    self.speechRecognition.stopTranscribing()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
                         voiceOut.readnumber(lang: vm.languageSelect, speech: String(vm.randomNumber))
                     }
                     
@@ -217,8 +221,8 @@ struct GameView: View {
                     print("reset transcript")
                     speechRecognition.transcript = ""
                     
-                    speechRecognition.resetTranscript()
-                    speechRecognition.startTranscribing()
+                    self.speechRecognition.resetTranscript()
+                    self.speechRecognition.startTranscribing()
                     
                 }
                 
@@ -295,10 +299,10 @@ struct GameView: View {
             self.idleTimerCounter =  -1
             
             
-//
-//            speechRecognition.resetTranscript()
-//
-//            speechRecognition.startTranscribing()
+
+            speechRecognition.resetTranscript()
+
+            speechRecognition.startTranscribing()
         
         }
         else{

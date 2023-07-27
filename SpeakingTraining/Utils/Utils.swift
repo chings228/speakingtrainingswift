@@ -12,17 +12,21 @@ struct Utils{
     
     static let langs  = [
         "en-US": "English",
-        "zh-HK":"Chinese",
+        "zh-HK":"Cantonese",
         "th-TH":"Thai",
-        "jp-JP":"Japanese",
-        "de-DE":"German"
+        "ja-JP":"Japanese",
+        "de-DE":"German",
+        "zh-CN":"Mandarin",
+        "ko-KR":"Korean",
+        "fr-FR":"French",
+        "es-ES":"Spanish"
     ]
     
 
 
-    static let gameTimerCounterVal : Int = 8
-    static let startCounterVal : Int = 5
-    static let numOfQuestionVal : Int = 10
+    static let gameTimerCounterVal : Int = 4
+    static let startCounterVal : Int = 2
+    static let numOfQuestionVal : Int = 5
     static let idleTimerCounterVal : Int = 2
     
     
