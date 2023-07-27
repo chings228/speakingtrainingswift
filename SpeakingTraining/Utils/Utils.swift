@@ -20,7 +20,26 @@ struct Utils{
     
 
 
-
+    static let gameTimerCounterVal : Int = 8
+    static let startCounterVal : Int = 5
+    static let numOfQuestionVal : Int = 10
+    static let idleTimerCounterVal : Int = 2
+    
+    
+    static func convertToNumberReading(num:Int,locale:String)->String{
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        formatter.locale = Locale(identifier: locale)
+        
+        let text = formatter.string(from:num as NSNumber)
+        
+        guard let text = text else {return ""}
+        
+        return text
+        
+        
+    }
     
 }
 

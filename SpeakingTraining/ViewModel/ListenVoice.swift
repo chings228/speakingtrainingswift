@@ -141,7 +141,7 @@ class SpeechRecognizer: ObservableObject {
 //            guard let md = result.speechRecognitionMetadata else {return}
 //            print(md)
             
-            print("isfinal \(result.isFinal)")
+            //print("isfinal \(result.isFinal)")
             //print(result)
             transcribe(result.bestTranscription.formattedString)
         }
@@ -152,15 +152,15 @@ class SpeechRecognizer: ObservableObject {
         Task { @MainActor in
             
             
-            if (message.isNumber){
+//            if (message.isNumber){
                 
                 transcript = message
-            }
+//            }
 
-            else{
-                
-                print("not number")
-            }
+//            else{
+//
+//                print("not number")
+//            }
 
             
         }

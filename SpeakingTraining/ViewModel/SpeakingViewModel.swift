@@ -20,6 +20,20 @@ class SpeakingViewModel : ObservableObject{
     
     
     @Published var randomNumber : Int = 0
+    
+    
+    @Published var finishMessage : String = "You are awesome"
+    
+
+    
+    func generateFinishMessage(){
+        
+        
+        
+        
+        
+    }
+
 
     
     func generateRandom(){
@@ -27,7 +41,7 @@ class SpeakingViewModel : ObservableObject{
         if (levelSelect == .Beginner){
             
             
-            randomNumber  = Int.random(in: 1...20)
+            randomNumber  = Int.random(in: 11...20)
             
             
         }
@@ -41,8 +55,8 @@ class SpeakingViewModel : ObservableObject{
             randomNumber = Int.random(in: 1000...10000)
         }
         
-      
-
+        print(randomNumber)
+        print(Utils.convertToNumberReading(num: randomNumber, locale: languageSelect))
         
     }
     

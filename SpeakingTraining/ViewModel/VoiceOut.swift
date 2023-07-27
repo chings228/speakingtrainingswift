@@ -16,6 +16,8 @@ class VoiceOut : NSObject,ObservableObject{
 
     @Published var isTalk = false
     
+    @Published var isFinishTalk = false
+    
     
     let synth = AVSpeechSynthesizer()
   
@@ -31,6 +33,7 @@ class VoiceOut : NSObject,ObservableObject{
         
         
         isTalk = true
+
         
         let utterance = AVSpeechUtterance(string:speech)
       
@@ -69,12 +72,13 @@ extension VoiceOut:AVSpeechSynthesizerDelegate{
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         print("did start ")
+        isFinishTalk = false
     }
     
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
-        isTalk = false
+        isFinishTalk = true
         print("did finish")
         
         print(isTalk)
